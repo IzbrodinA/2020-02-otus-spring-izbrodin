@@ -13,9 +13,10 @@ public class LocaleServiceImpl implements LocaleService {
     private Locale locale;
 
     public LocaleServiceImpl(MessageSource messageSource,
-                             @Value("#{ systemProperties['user.language'] }") String defaultLanguage) {
+                             @Value("#{ systemProperties['user.language'] }") String defaultLanguage,
+                             @Value("#{ systemProperties['user.country'] }") String defaultCountry) {
         this.messageSource = messageSource;
-        this.locale = new Locale(defaultLanguage);
+        this.locale = new Locale(defaultLanguage, defaultCountry);
     }
 
 
@@ -31,7 +32,7 @@ public class LocaleServiceImpl implements LocaleService {
 
     @Override
     public void setLocale(String language) {
-        this.locale = new Locale(language);
+        this.locale = new Locale(language, language.toUpperCase());
     }
 
 }
