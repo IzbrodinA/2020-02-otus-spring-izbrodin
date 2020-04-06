@@ -1,0 +1,9 @@
+spring:
+  messages:
+    basename: i18n/messages
+
+application:
+  language:
+    - en
+    - ru
+  numberQuestion: 5
